@@ -71,7 +71,7 @@ const ModalWindow: React.FC<Props> = ({ item }) => {
   const dispatch = useDispatch()
   const {offers} = useContext(AppStateContext)
   const { data, error, isLoading } = useFetchData<Data>(
-    'http://localhost:8000/offers'
+    'https://mock-api-candy-rack.herokuapp.com/offers'
   )
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
