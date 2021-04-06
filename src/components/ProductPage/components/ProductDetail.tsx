@@ -19,11 +19,30 @@ const DetailContainer = styled.div`
   ${tw` flex-1 p-5`}
 `
 
+const Header = styled.h2`
+  ${tw`text-lg font-bold`}
+  margin-bottom: 8px!important;
+`
+
+const Description = styled.p`
+  ${tw`mb-2`}
+`
 
 const ProductDetail: React.FC<Props> = ({
-  product: { id, title, description, variants, price, currency, quantity, image },
+  product: {
+    id,
+    title,
+    description,
+    variants,
+    price,
+    currency,
+    quantity,
+    image,
+  },
 }) => {
-  const [variant, setVariant] = useState<Option | null>(variants && transformVariants(variants)[0])
+  const [variant, setVariant] = useState<Option | null>(
+    variants && transformVariants(variants)[0]
+  )
   const addToCart = useAddToCart()
   const dispatch = useDispatch()
   const state = useContext(AppStateContext)
@@ -31,7 +50,13 @@ const ProductDetail: React.FC<Props> = ({
   const handleClick = () => {
     dispatch({
       type: 'TOGGLE_MODAL',
-      payload: { title, variant: variant && variant.value, price, currency, image },
+      payload: {
+        title,
+        variant: variant && variant.value,
+        price,
+        currency,
+        image,
+      },
     })
     dispatch({
       type: 'RESET_OFFERS',
@@ -39,24 +64,24 @@ const ProductDetail: React.FC<Props> = ({
     addToCart({ title, id, price, currency, variant: variant && variant.value })
   }
 
- console.log(state)
+  console.log(state)
   return (
     <>
       <DetailContainer>
-        <h2>{title}</h2>
-        <p>{description}</p>
-        <p>
+        <Header>{title}</Header>
+        <Description>{description}</Description>
+        <Description>
           <em>
             {quantity > 0
               ? `${quantity} ${quantity > 1 ? 'items' : 'items'} in stock`
               : 'Out of stock'}
           </em>
-        </p>
-        <p>
+        </Description>
+        <Description>
           <strong>
             Price: {price} {currency}
           </strong>
-        </p>
+        </Description>
         {variants && (
           <Dropdown
             onChange={(o: Option) => setVariant(o)}

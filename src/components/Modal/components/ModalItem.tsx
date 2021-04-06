@@ -122,7 +122,7 @@ const ModalItem: React.FC<Props> = ({
               />
             )}
             <Button
-              text="+Add"
+              text="Add"
               color="green"
               size="s"
               handleClick={handleClick}

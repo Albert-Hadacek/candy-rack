@@ -15,6 +15,14 @@ const ModalContainer = styled.div`
   transform: translate(-50%, -50%);
 `
 
+const Header = styled.h2`
+${tw`text-2xl font-bold`}
+`
+
+const HeaderItem = styled.h4`
+${tw`text-l font-bold`}
+`
+
 const ModalSectionTitle = styled.div`
   ${tw` py-6 px-8 flex items-center justify-center relative`}
   border-bottom: 1px solid lightgray;
@@ -93,15 +101,15 @@ const ModalWindow: React.FC<Props> = ({ item }) => {
       <ModalContainer>
         <ModalSectionTitle>
           <CloseIcon onClick={handleClose}>✕</CloseIcon>
-          <h2>Wait, don't miss your deals, today only!</h2>
+          <Header>Wait, don't miss your deals, today only!</Header>
         </ModalSectionTitle>
         <ModalSectionHeader>
           <ModalHeader>
             <ModalImage src={image} alt="Image" />
-            <h4>
+            <HeaderItem>
               {title}
               {variant ? ` - ${variant}` : ''}
-            </h4>
+            </HeaderItem>
           </ModalHeader>
           <h5>
             {price} {currency}
