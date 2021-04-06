@@ -36,7 +36,7 @@ const useFetchData = <D,>(url: string) => {
     }
 
     fetchData()
-  }, [])
+  }, [url])
 
   return { data, error, isLoading }
 }
